@@ -5,5 +5,4 @@
   
   tasks:
     - name: ping all server2
-      shell: |
-        ping $HOSTNAME
+      ping:
