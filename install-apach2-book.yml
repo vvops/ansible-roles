@@ -2,13 +2,12 @@
 - name: установка apache2
   hosts: all
   tasks:
-    - name: apache2
-      apt:
-        name: apache2
-        state: present
-    
-    - name: start apach2
-      service: 
-        - name: httpd
-          state: started
-          enabled: true
+  - name: apache2
+    apt:
+      name: apache2
+      state: present
+  - name: start apach2
+    service: 
+      - name: httpd
+        state: started
+        enabled: true
