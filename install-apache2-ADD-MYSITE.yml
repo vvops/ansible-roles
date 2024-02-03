@@ -15,7 +15,7 @@
         state: present
                 
     - name: копировать мой сайт
-      copy: src={{ source_file }}  dest={{destin_file}} mode0555
+      copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
       notify: restart apache2
 
     - name: включаем apache2
@@ -23,10 +23,10 @@
         name: apache2
         state: started
         enabled: true
-        
+
 
   handlers:
   - name: restart apache2
     service:
-      name: apach2
+      name: apache2
       state: restarted
