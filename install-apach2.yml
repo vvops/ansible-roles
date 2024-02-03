@@ -7,7 +7,7 @@
         name: apache2
         state: present
     
-    - name:
+    - name: start apach2
       service: 
         - name: httpd
           state: started
