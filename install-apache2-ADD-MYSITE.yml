@@ -1,0 +1,32 @@
+---
+- name: apache2
+  hosts: all
+  become: true
+
+  vars:
+    source_file: ./MYSITE/index.htlm
+    destin_file: /var/www/html
+
+
+  tasks:
+    - name: установка apache2
+      apt:
+        name: apache2
+        state: present
+                
+    - name: копировать мой сайт
+      copy: src={{ source_file }}  dest={{destin_file}} mode0555
+      notify: restart apache2
+
+    - name: включаем apache2
+      service: 
+        name: apache2
+        state: started
+        enabled: true
+        
+
+  handlers:
+  - name: restart apache2
+    service:
+      name: apach2
+      state: restarted
