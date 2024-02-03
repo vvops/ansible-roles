@@ -19,3 +19,6 @@
 
     - debug:
         msg: "vladelic etogo servera -->{{ owner }}<--"
+
+    - set_fact: 
+        full_msg: "{{ mwssage }} {{ message2 }}  from {{ owner }}"
