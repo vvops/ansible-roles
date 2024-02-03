@@ -1,0 +1,8 @@
+---
+- name:
+  hosts: all
+  become: true
+  
+  tasks:
+    - name: ping all server2
+      command: ping 
