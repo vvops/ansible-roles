@@ -22,5 +22,5 @@
 
     - set_fact: full_msg="{{ mwssage }} {{ message2 }}  from {{ owner }}"
 
-    - debag:
+    - debug:
         var: full_msg
