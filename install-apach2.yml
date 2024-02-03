@@ -1,0 +1,14 @@
+---
+- name: установка apache2
+  hosts: all
+  tasks:
+    - name: apache2
+      apt:
+        name: apache2
+        state: present
+    
+    - name:
+      service: 
+        - name: httpd
+          state: started
+          enabled: true
