@@ -26,4 +26,4 @@
         var: full_msg
 
     - debug:
-        var: ansible_sistribution
+        var: ansible_distribution
