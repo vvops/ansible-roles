@@ -1,2 +1,1 @@
----
-ansible_user=vova
+ansible_user: vova
