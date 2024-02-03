@@ -1,0 +1,15 @@
+---
+- name: my playbook for variables
+  hosts: all
+  become: true
+
+  vars:
+    message: hello
+    message2: secret
+    secret: hello hell
+
+
+  tasks:
+    - name: prin sectet variables
+      debug:
+        var: secret 
