@@ -20,7 +20,7 @@
     - debug:
         msg: "vladelic etogo servera -->{{ owner }}<--"
 
-    - set_fact: full_msg="{{ mwssage }} {{ message2 }}  from {{ owner }}"
+    - set_fact: full_msg="{{ message }} {{ message2 }}  from {{ owner }}"
 
     - debug:
         var: full_msg
