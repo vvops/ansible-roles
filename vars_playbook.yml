@@ -32,4 +32,4 @@
       register: results
 
     - debug:
-        var: results 
+        var: results.stdout
