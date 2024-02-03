@@ -15,3 +15,4 @@
         var: secret 
     - debug:
         msg: "secretnoe slovo {{ secret }}"
+    - debug: "vladelic etogo servera -->{{ owner }}<--"
