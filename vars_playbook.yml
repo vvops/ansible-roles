@@ -13,5 +13,5 @@
     - name: prin sectet variables
       debug:
         var: secret 
-- debug:
-    msg: "secretnoe slovo {{secret}}"
+    - debug:
+        msg: "secretnoe slovo {{ secret }}"
