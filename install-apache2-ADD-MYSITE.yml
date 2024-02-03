@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    source_file: ./MYSITE/index.htlm
+    source_file: ./MYSITE/index.html
     destin_file: /var/www/html
 
 
