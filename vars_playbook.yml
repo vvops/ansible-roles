@@ -27,3 +27,9 @@
 
     - debug:
         var: ansible_distribution
+
+    - shell: uptime 
+      register: results
+
+    - debug:
+        var: results 
