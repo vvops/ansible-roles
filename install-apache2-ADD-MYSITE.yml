@@ -53,13 +53,13 @@
 #        - "index.html"
 #        - "text.css"
 #        - "text.react.css"
-      notify: 
+      notify:
         - restart_apache2_UBUNTU
         - restart_apache2_RedHat
-    - name: 
-        file:
-          path: /var/www/html/index.html
-          state: absent
+    - name:
+      file:
+        path: /var/www/html/index.html
+        state: absent
 
 
   handlers:
