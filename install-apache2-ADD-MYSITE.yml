@@ -19,13 +19,13 @@
       apt:
         name: apache2
         state: present
-        when: ansible_os_family == "Debian"
+      when: ansible_os_family == "Debian"
 
     - name: установка apache (httpd) на RedHat
       yum:
         name: httpd
         state: present
-        when: ansible_os_family == "RedHat"
+      when: ansible_os_family == "RedHat"
 
     
                 
