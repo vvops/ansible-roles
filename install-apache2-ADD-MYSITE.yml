@@ -44,11 +44,13 @@
 
 
     - name: копировать мой сайт "UBUNTU"
-      copy: src={{ source_folder }}/{{ item }}  dest={{ destin_folder }} mode=0555
-      loop:
-        - "*.html"
-        - "text.css"
-        - "text.react.css"
+      copy: src={{ item }}  dest={{ destin_folder }} mode=0555
+      with_fileglob: "{{ source_folder }}  /*.*"   #альторнатива этому loop ниже указано
+#      copy: src={{ source_folder }}/{{ item }}  dest={{ destin_folder }} mode=0555
+#      loop:
+#        - "index.html"
+#        - "text.css"
+#        - "text.react.css"
       notify: 
         - restart_apache2_UBUNTU
         - restart_apache2_RedHat
