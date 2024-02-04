@@ -11,13 +11,14 @@
     - name: проверка семейства oc linux
       debug:
         var: ansible_os_family
-        
+
 
     - block: #=========block UBUNTU=======
         - name: установка apache2 на UBUNTU
           apt:
-          name: apache2
-          state: present
+            name: apache2
+            state: present
+            
 
         - name: копировать мой сайт "UBUNTU"
           copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
