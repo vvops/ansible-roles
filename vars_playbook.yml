@@ -14,10 +14,6 @@
       debug: 
         var: secret
 
-    - name:
-      debug:
-        var: ansible_os_family
-
     - debug:
         msg: "secretnoe slovo {{ secret }}"
 
@@ -31,6 +27,11 @@
 
     - debug:
         var: ansible_distribution
+
+    - name: семейство операционной системы 
+      debug:
+        var: ansible_os_family
+
 
     - shell: uptime 
       register: results
