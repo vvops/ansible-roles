@@ -13,11 +13,15 @@
         - "kola"
 
     - name: loop shell
-      shell: echo -n Z > myfile-1.txt && cat myfile-1.txt # запус shell на серваке
+      shell: echo -n Z >> /home/vova/myfile-1.txt && cat myfile-1.txt # запус shell на серваке
       register: output  # сохранить результаты в переменную output
       delay: 2      # задержа перед запуском
       retries: 10    # максимальное количество запусков
-      until: output.stdout.find("ZZZZZZZ") == false
+      until: output.stdout.find("ZZ") == false
+    - name:
+      file:
+        path: /home/vova/myfile-1.txt
+        state: absent
 
     - name: print-output
       debug:
