@@ -8,50 +8,50 @@
     destin_file: /var/www/html
 
 
-
-
   tasks:
     - name: проверка семейства oc linux
       debug:
         var: ansible_os_family
 
-    - name: установка apache2 на UBUNTU
-      apt:
-        name: apache2
-        state: present
+
+
+    - block: =========block UBUNTU=======
+
+        - name: установка apache2 на UBUNTU
+          apt:
+            name: apache2
+            state: present
+
+        - name: копировать мой сайт "UBUNTU"
+          copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
+          notify: restart_apache2_UBUNTU  
+
+        - name: включаем apache2 на UBUNTU
+          service: 
+            name: apache2
+            state: started
+            enabled: true
       when: ansible_os_family == "Debian"
 
-    - name: установка apache (httpd) на RedHat
-      yum:
-        name: httpd
-        state: present
+
+
+    - block: =========block UBUNTU=======
+
+        - name: установка apache (httpd) на RedHat
+          yum:
+            name: httpd
+            state: present              
+
+        - name: копировать мой сайт "RedHat"
+          copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
+          notify: restart_apache2_RedHat
+
+        - name: включаем apache (httpd) на RedHat
+          service: 
+            name: httpd
+            state: started
+            enabled: true
       when: ansible_os_family == "RedHat"
-
-    
-                
-    - name: копировать мой сайт "UBUNTU"
-      copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
-      notify: restart_apache2_UBUNTU
-
-    - name: копировать мой сайт "RedHat"
-      copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
-      notify: restart_apache2_RedHat
-
-
-    - name: включаем apache2 на UBUNTU
-      service: 
-        name: apache2
-        state: started
-        enabled: true
-      when: ansible_os_family == "Debian"
-
-    - name: включаем apache (httpd) на RedHat
-      service: 
-        name: httpd
-        state: started
-        enabled: true
-      when: ansible_os_family == "RedHat"
-
 
 
   handlers:
