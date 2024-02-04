@@ -63,8 +63,8 @@
     
     - name: генирация страницы "index.html"
       template:
-        src: "{{ source_folder }}"/index.j2
-        dest: "{{ destin_folder }}"/index.html
+        src: "{{ source_folder }}/index.j2"
+        dest: "{{ destin_folder }}/index.html"
       notify:
         - restart_apache2_UBUNTU
         - restart_apache2_RedHat
