@@ -17,4 +17,8 @@
       register: output  # сохранить результаты в переменную output
       delay: 2      # задержа перед запуском
       retries: 10    # максимальное количество запусков
-      until: output.stdout.find("ZZZ") == false 
+      until: output.stdout.find("ZZZ") == false
+
+    - name: print-output
+      debug:
+        var: output.stdout 
