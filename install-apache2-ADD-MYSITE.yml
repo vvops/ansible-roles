@@ -9,7 +9,12 @@
 
 
 
+
   tasks:
+    - name: проверка семейства oc linux
+      debag:
+        var: ansible_os_family
+        
     - name: установка apache2 на UBUNTU
       apt:
         name: apache2
