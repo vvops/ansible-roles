@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    source_folder: ./MYSITE/
+    source_folder: ./MYSITE
     destin_folder: /var/www/html
 
   tasks:
@@ -56,10 +56,18 @@
       notify:
         - restart_apache2_UBUNTU
         - restart_apache2_RedHat
-    - name:
+    - name: удаление файла "index.html" PS. доделай плейбук 
       file:
         path: /var/www/html/index.html
         state: absent
+    
+    - name: генирация страницы "index.html"
+      templete:
+        src: "{{ source_folder }}"/index.j2
+        dest: "{{ destin_folder }}"/index.html
+      notify:
+        - restart_apache2_UBUNTU
+        - restart_apache2_RedHat
 
 
   handlers:
