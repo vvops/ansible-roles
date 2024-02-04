@@ -62,7 +62,7 @@
         state: absent
     
     - name: генирация страницы "index.html"
-      templete:
+      template:
         src: "{{ source_folder }}"/index.j2
         dest: "{{ destin_folder }}"/index.html
       notify:
