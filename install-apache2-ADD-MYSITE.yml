@@ -4,8 +4,8 @@
   become: true
 
   vars:
-    source_file: ./MYSITE/index.html
-    destin_file: /var/www/html
+    source_folder: ./MYSITE/
+    destin_folder: /var/www/html
 
   tasks:
     - name: проверка семейства oc linux
@@ -17,12 +17,8 @@
         - name: установка apache2 на UBUNTU
           apt:
             name: apache2
-            state: present
-            
+            state: present           
 
-        - name: копировать мой сайт "UBUNTU"
-          copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
-          notify: restart_apache2_UBUNTU  
 
         - name: включаем apache2 на UBUNTU
           service: 
@@ -36,11 +32,7 @@
         - name: установка apache (httpd) на RedHat
           yum:
             name: httpd
-            state: present              
-
-        - name: копировать мой сайт "RedHat"
-          copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
-          notify: restart_apache2_RedHat
+            state: present
 
         - name: включаем apache (httpd) на RedHat
           service: 
@@ -50,13 +42,28 @@
       when: ansible_os_family == "RedHat"
 
 
+
+    - name: копировать мой сайт "UBUNTU"
+      copy: src={{ source_folder }}/{{ item }}  dest={{ destin_folder }} mode=0555
+      loop:
+        - "index.html"
+        - "text.css"
+        - "text.react.css"
+      notify: 
+        - restart_apache2_UBUNTU
+        - estart_apache2_RedHat
+
+
+
   handlers:
   - name: restart_apache2_UBUNTU
     service:
       name: apache2
       state: restarted
+    when: ansible_os_family == "Debian"
 
   - name: restart_apache2_RedHat
     service:
       name: httpd
       state: restarted
+    when: ansible_os_family == "RedHat"
