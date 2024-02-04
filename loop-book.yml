@@ -1,0 +1,13 @@
+---
+- name: loop test
+  hosts: node1
+  become: true 
+
+  tasks:
+    - name: say hello
+      debug:
+        msg: "hello {{ item }}"
+      loop: 
+        - "vasiliy"
+        - "Masha"
+        - "kola"
