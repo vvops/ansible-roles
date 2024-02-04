@@ -1,2 +1,61 @@
 ---
-# tasks file for deploy_apache_web
+- name: проверка семейства oc linux
+  debug:
+    var: ansible_os_family
+
+
+- block: #=========block UBUNTU=======
+    - name: установка apache2 на UBUNTU
+      apt:
+        name: apache2
+        state: present           
+
+
+    - name: включаем apache2 на UBUNTU
+      service: 
+        name: apache2
+        state: started
+        enabled: true
+  when: ansible_os_family == "Debian"
+
+
+- block: #=========block UBUNTU=======
+    - name: установка apache (httpd) на RedHat
+      yum:
+        name: httpd
+        state: present
+
+    - name: включаем apache (httpd) на RedHat
+      service: 
+        name: httpd
+        state: started
+        enabled: true
+  when: ansible_os_family == "RedHat"
+
+- name: копировать мой сайт "UBUNTU"
+  copy:
+    src: "{{ source_folder }}"
+    dest: "{{ destin_folder }}"
+#    - name: копировать мой сайт "UBUNTU"
+#      copy: src={{ item }}  dest={{ destin_folder }} mode=0555
+#      with_fileglob: "{{ source_folder }}/*.*"   #альторнатива этому loop ниже указано
+#      copy: src={{ source_folder }}/{{ item }}  dest={{ destin_folder }} mode=0555
+#      loop:
+#        - "index.html"
+#        - "text.css"
+#        - "text.react.css"
+  notify:
+    - restart_apache2_UBUNTU
+    - restart_apache2_RedHat
+- name: удаление файла "index.html" PS. доделай плейбук 
+  file:
+    path: /var/www/html/index.html
+    state: absent
+
+- name: генирация страницы "index.html"
+  template:
+    src: "{{ source_folder }}/index.j2"
+    dest: "{{ destin_folder }}/index.html"
+  notify:
+    - restart_apache2_UBUNTU
+    - restart_apache2_RedHat
