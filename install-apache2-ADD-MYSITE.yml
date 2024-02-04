@@ -41,20 +41,10 @@
             enabled: true
       when: ansible_os_family == "RedHat"
 
+ 
     - name: копировать мой сайт "UBUNTU"
-      find:
-        paths: "{{ source_folder }}"
-        file_type: any
-      register: files
-    - name: copy files
-      copy:
-        src: "{{ files }}"
-        dest: "{{destin_folder}}"
-      loop: "{{ files }}"
-
- #   - name: копировать мой сайт "UBUNTU"
-  #    copy: src={{ item }}  dest={{ destin_folder }} mode=0555
-   #   with_fileglob: "{{ source_folder }}/*.*"   #альторнатива этому loop ниже указано
+      copy: src={{ item }}  dest={{ destin_folder }} mode=0555
+      with_fileglob: "{{ source_folder }}/*.*"   #альторнатива этому loop ниже указано
 #      copy: src={{ source_folder }}/{{ item }}  dest={{ destin_folder }} mode=0555
 #      loop:
 #        - "index.html"
