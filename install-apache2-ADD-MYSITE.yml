@@ -45,7 +45,7 @@
 
     - name: копировать мой сайт "UBUNTU"
       copy: src={{ item }}  dest={{ destin_folder }} mode=0555
-      with_fileglob: "{{ source_folder }}/."   #альторнатива этому loop ниже указано
+      with_fileglob: "{{ source_folder }}/*.*"   #альторнатива этому loop ниже указано
 #      copy: src={{ source_folder }}/{{ item }}  dest={{ destin_folder }} mode=0555
 #      loop:
 #        - "index.html"
