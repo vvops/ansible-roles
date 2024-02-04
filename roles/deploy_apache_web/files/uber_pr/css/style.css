@@ -1,0 +1,192 @@
+* {
+    font-family: 'Roboto', sans-serif;
+}
+header {
+    position: relative;
+    
+}
+header nav {
+    height: 50px;
+    background-color: #212121;
+}
+ 
+
+.menu {
+    display: flex;
+    justify-content: space-between;
+    padding: 13px 70px ;
+    margin: 0;
+    list-style-type: none;
+}
+.menu .menu_link {
+    color: #FFFFFF;
+    font-weight: 300;
+    font-size: 15px;
+    text-decoration: none;
+}
+.menu .menu_item {
+    border-right: 2px dotted white;
+    padding-right: 28px;
+}
+.subheder {    
+    position:absolute;
+    width: 100%; 
+    height: 84px;    
+    background-color: rgb(0, 0, 0, .10);
+}
+.subheder .subheder_logo {
+    display: block;
+    margin-top: 16px;
+    max-width: 100%;
+}
+.subheder .subheder_text {
+    margin-top: 6px;
+    opacity: 0.5;
+    font-weight: 200;
+    font-size: 13px;
+    color: #FFFFFF;
+}
+.subheder .subheder_call { 
+   text-align: right;
+    margin-top: 19px;
+    font-weight: 300;
+    font-size: 12px;
+
+    color: #FFFFFF;
+}
+.subheder .subheder_link_call {
+    display: block;
+    text-decoration: none;
+    margin-top: 8px;
+    font-size: 22px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-align: right;
+    line-height: 12px;
+}
+
+.subheder .subheder_btn { 
+    width: 172px;
+    height: 46px;
+    margin-top: 19px;
+    background: linear-gradient(0deg, #1EACC7 0%, #4CE2FF 100%);
+    box-shadow: inset 0px -3px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;  
+    font-size: 14px;
+    font-weight: 400;   
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.21);
+}
+
+.partners {
+    min-height: 800px;
+    background: url('/src/img/bg-1/uber_bg.png.crdownload') center center/cover no-repeat;   
+    padding: 150px 0 135px 0;  
+}
+ 
+
+.partners .partners_header {   
+    text-align: center;
+    font-weight: 700;
+    font-size: 60px;   
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;    
+}
+
+.partners .partners_subheader {
+    font-size: 36px;
+    text-align: center;
+    line-height: 36px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    margin: 0;
+    margin-top: 22px;
+}
+.partners .subhader_text { 
+    margin-top: 23px;  
+    font-size: 18px;
+    text-align: center;
+    line-height: 24px;
+    font-weight: 400;    
+    color: #FFFFFF;
+}
+
+
+.partners .partnes_btn { 
+    display: block;
+    margin: 116px auto 0 auto;  
+    width: 259px;
+    height: 63px;
+    border: none;    
+    background: linear-gradient(0deg, #1EACC7 0%, #4CE2FF 100%);
+    box-shadow: inset 0px -4px 0px rgba(0, 0, 0, 0.12);
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-weight: 400;
+    font-size: 18px;
+    text-transform: uppercase;
+    text-shadow: 1px 1px 0px rgba(0, 0, 0, 0.21);
+}
+
+.cause {
+    padding: 77px 0 64px 0;
+}
+
+.cause .label {
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+    width: 115px;
+    height: 27px;
+    background: #000000;  
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #FFFFFF;
+}
+
+.cause .title {    
+    margin: 0 auto;  
+    margin-top: 33px;
+    text-align: center;  
+    line-height: 34px;
+    text-transform: uppercase;  
+    font-size: 38px;    
+    color: #222222;
+}
+
+.cause .item_wallet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 35px;
+} 
+.cause .item_wallet .wallet_circol {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 26px;
+    Width: 116px;
+    Height: 116px;
+    background: #1EACC7;
+    border-radius: 100%;
+}
+.cause .item_wallet .wallet_descr {
+    width: 371px;
+}
+
+.cause .item_wallet .wallet_descr .wallet_subtext {
+    line-height: 21px;
+    color: #1eacc7;
+    font-size: 17px;
+    font-weight: 400;
+}
+.cause .item_wallet .wallet_descr .wallet_text {
+    color: #202020;
+    font-size: 15px;
+    font-weight: 300;
+    line-height: 21px;
+}
+
