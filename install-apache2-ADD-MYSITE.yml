@@ -4,7 +4,7 @@
   become: true
 
   vars:
-    source_folder: ./MYSITE
+    source_folder: ./MYSITE/
     destin_folder: /var/www/html
 
   tasks:
