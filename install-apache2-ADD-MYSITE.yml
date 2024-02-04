@@ -8,25 +8,54 @@
     destin_file: /var/www/html
 
 
+
   tasks:
-    - name: установка apache2
+    - name: установка apache2 на UBUNTU
       apt:
         name: apache2
         state: present
-                
-    - name: копировать мой сайт
-      copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
-      notify: restart apache2
+        when: ansible_os_family == "Debian"
 
-    - name: включаем apache2
+    - name: установка apache (httpd) на RedHat
+      yum:
+        name: httpd
+        state: present
+        when: ansible_os_family == "RedHat"
+
+    
+                
+    - name: копировать мой сайт "UBUNTU"
+      copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
+      notify: restart_apache2_UBUNTU
+
+    - name: копировать мой сайт "RedHat"
+      copy: src={{ source_file }}  dest={{ destin_file }} mode=0555
+      notify: restart_apache2_RedHat
+
+
+    - name: включаем apache2 на UBUNTU
       service: 
         name: apache2
         state: started
         enabled: true
+        when: ansible_os_family == "Debian"
+
+    - name: включаем apache (httpd) на RedHat
+      service: 
+        name: httpd
+        state: started
+        enabled: true
+        when: ansible_os_family == "RedHat"
+
 
 
   handlers:
-  - name: restart apache2
+  - name: restart_apache2_UBUNTU
     service:
       name: apache2
+      state: restarted
+
+  - name: restart_apache2_RedHat
+    service:
+      name: httpd
       state: restarted
