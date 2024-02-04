@@ -17,7 +17,7 @@
       register: output  # сохранить результаты в переменную output
       delay: 2      # задержа перед запуском
       retries: 10    # максимальное количество запусков
-      until: output.stdout.find("ZZ") == false
+      until: output.stdout.find("ZZZZZ") == false
     - name:
       file:
         path: /home/vova/myfile-1.txt
