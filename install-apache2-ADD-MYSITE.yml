@@ -51,7 +51,7 @@
         - "text.react.css"
       notify: 
         - restart_apache2_UBUNTU
-        - estart_apache2_RedHat
+        - restart_apache2_RedHat
 
 
 
