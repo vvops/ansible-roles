@@ -56,7 +56,10 @@
       notify: 
         - restart_apache2_UBUNTU
         - restart_apache2_RedHat
-
+    - name: 
+        file:
+          path: /var/www/html/index.html
+          state: absent
 
 
   handlers:
