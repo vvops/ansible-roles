@@ -19,7 +19,7 @@
   when: ansible_os_family == "Debian"
 
 
-- block: #=========block UBUNTU=======
+- block: #=========block RedHat=======
     - name: установка apache (httpd) на RedHat
       yum:
         name: httpd
@@ -34,7 +34,7 @@
 
 - name: копировать мой сайт "UBUNTU"
   copy:
-    src: .
+    src: ./mysite/.
     dest: "{{ destin_folder }}"
 #    - name: копировать мой сайт "UBUNTU"
 #      copy: src={{ item }}  dest={{ destin_folder }} mode=0555
