@@ -10,7 +10,7 @@
 
 
   tasks:
-    - name: prin sectet variables
+    - name: print sectet variables
       debug: 
         var: secret
 
