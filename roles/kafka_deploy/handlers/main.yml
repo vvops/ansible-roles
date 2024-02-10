@@ -1,10 +1,7 @@
 ---
 - name: daemon-reload
-  service:
-    name: daemon-reload
-    state: started
-  when: ansible_os_family == "Debian"
-
+  shell: |
+    systemctl daemon-reload
 - name: restarted_kafka
   service: 
     name: kafka
