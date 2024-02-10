@@ -84,6 +84,17 @@
     - restarted_zookeeper
     - restarted_kafka
     - daemon-reload
+- name: kafka запуск кафка
+  service:
+    name: kafka
+    state: started
+    enabled: true
+
+- name: запуск зоокипера
+  service:
+    name: zookeeper
+    state: started
+    enabled: true
 
 - name: Pause for 20 sec
   ansible.builtin.pause:
