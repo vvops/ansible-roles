@@ -72,18 +72,18 @@
     src: "zookeeper.j2"
     dest: "{{ destin_folder_unit_zookeeper }}/zookeeper.service"
   notify:
-    - restart_kafka
+    - restarted_zookeeper
+    - restarted_kafka
     - daemon-reload
-    - enable_zookeeper
 
 - name: генирация файла конфигурации юнита "kafka.service"
   template:
     src: "kafka.j2"
     dest: "{{ destin_folder_unit_kafka }}/kafka.service"
   notify:
-    - restart_kafka
+    - restarted_zookeeper
+    - restarted_kafka
     - daemon-reload
-    - enable_zookeeper
 
 - name: Pause for 20 sec
   ansible.builtin.pause:
