@@ -67,7 +67,7 @@
 
 - name: генирация файла конфигурации юнита "zookeeper.service"
   template:
-    src: "kafka.service.j2"
+    src: "zookeeper.service.j2"
     dest: "{{ destin_folder_unit_zookeeper }}/zookeeper.service"
   notify:
     - restart_kafka
