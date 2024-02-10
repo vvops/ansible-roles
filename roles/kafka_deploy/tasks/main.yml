@@ -1,2 +1,94 @@
 ---
-# tasks file for kafka_deploy
+- name: установка
+  apt_repository:
+    repo: "deb http://us.archive.ubuntu.com/ubuntu/ {{ ansible_distribution_release }} universe"
+    state: present
+    update-cache: true
+- name: Pause 60 sec
+  ansible.builtin.pause:
+    seconds: 60         
+
+- name: установка доп пакетов
+  apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+      - tar
+      - wget
+      - default-jdk
+    update-cache: true
+- name: Pause for 100 sec
+  ansible.builtin.pause:
+    seconds: 100
+
+- name: проверка версии 
+  shell: |
+    java -version
+  args:
+    warn: no
+- name: Pause for 10 sec
+  ansible.builtin.pause:
+    seconds: 10
+
+- name: скачаем репо kafka
+  shell: |
+    mkdir /home/vova/tar
+    wget -P /home/vova/tar/ https://downloads.apache.org/kafka/3.5.1/kafka_2.13-3.5.1.tgz                                    
+    mkdir /opt/kafka
+  args:
+    warn: no
+- name: Pause for 30 sec
+  ansible.builtin.pause:
+    seconds: 30
+
+
+- name: распаковка репо kafka
+  shell: |
+    tar zxf /home/vova/tar/kafka_*.tgz -C /opt/kafka --strip 1
+  args:
+    warn: no       
+
+- name: создать пользователя kafka
+  user:
+    name: kafka
+    state: present  
+
+- name: внести изменение в файл конфигурации kafka  чтоб можно было вручную удлять топик + создаем учетку kafka
+  shell: |
+    echo "delete.topic.enable = true" >> /opt/kafka/config/server.properties
+    chown -R kafka:kafka /opt/kafka
+  args:
+    warn: no
+- name: Pause for 20 sec
+  ansible.builtin.pause:
+    seconds: 20
+
+- name: генирация файла конфигурации юнита "zookeeper.service"
+  template:
+    src: "kafka.service.j2"
+    dest: "{{ destin_folder_unit_zookeeper }}/zookeeper.service"
+  notify:
+    - restart_kafka
+    - daemon-reload
+    - enable_zookeeper
+
+- name: генирация файла конфигурации юнита "kafka.service"
+  template:
+    src: "kafka.service.j2"
+    dest: "{{ destin_folder_unit_kafka }}/kafka.service"
+  notify:
+    - restart_kafka
+    - daemon-reload
+    - enable_zookeeper
+
+- name: Pause for 20 sec
+  ansible.builtin.pause:
+    seconds: 20
+
+- name: проверка соединения
+  shell: |
+    ss -tunlp | grep :9092
+  args:
+    warn: no

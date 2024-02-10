@@ -1,2 +1,3 @@
 ---
-# vars file for kafka_deploy
+destin_folder_unit_kafka: /etc/systemd/system
+destin_folder_unit_zookiper: /etc/systemd/system

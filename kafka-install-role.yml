@@ -1,0 +1,7 @@
+---
+- name: install kafka
+  hosts: kafka1
+  become: true
+
+  roles:
+    - { role: kafka_deploy }

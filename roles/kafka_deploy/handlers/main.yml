@@ -1,2 +1,18 @@
 ---
-# handlers file for kafka_deploy
+- name: daemon-reload
+  service:
+    name: daemon-reload
+    state: started
+  when: ansible_os_family == "Debian"
+
+- name: restarted_kafka
+  service: 
+    name: kafka
+    state: restarted
+  when: ansible_os_family == "Debian"
+
+- name: restarted_zookeeper
+  service: 
+    name: zookeeper
+    state: restarted
+  when: ansible_os_family == "Debian"
