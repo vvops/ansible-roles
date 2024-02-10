@@ -105,3 +105,6 @@
     ss -tunlp | grep :9092
   args:
     warn: no
+  register: port_kafka
+- debug:
+    var: port_kafka  
