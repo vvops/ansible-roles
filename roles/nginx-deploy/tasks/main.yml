@@ -41,4 +41,10 @@
     name: nginx
     state: started
   notify:
-    - test_nginx
+    - status_nginx
+- name: test_nginx
+  shell: |
+    netstat -tulpn
+  register: nginx_status
+- debug:
+    var: nginx_status

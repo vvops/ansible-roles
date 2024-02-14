@@ -1,4 +1,7 @@
 ---
-- name: test_nginx
-  shell: |
-    netstat -tulpn
+- name: status_nginx
+  service: 
+    name: nginx
+    state: status
+
+    
