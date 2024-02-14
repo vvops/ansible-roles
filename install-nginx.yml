@@ -3,4 +3,4 @@
   hosts: nginx1
   become: true
   roles:
-    - { roel: nginx-deploy }
+    - { role: nginx-deploy }
