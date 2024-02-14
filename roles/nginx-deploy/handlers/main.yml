@@ -1,2 +1,4 @@
 ---
-# handlers file for nginx-deploy
+- name: test_nginx
+  sell: |
+    netstat -tulpn

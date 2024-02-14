@@ -1,0 +1,6 @@
+---
+- name: установка nginx и дополнительные пакеты
+  hosts: nginx1
+  become: true
+  role:
+    - { roel: nginx-deploy }

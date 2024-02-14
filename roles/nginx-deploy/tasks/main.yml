@@ -1,2 +1,44 @@
 ---
-# tasks file for nginx-deploy
+- name: установка дополнительных пакетов
+  apt:
+    name:
+      - ca-certificates
+      - curl
+      - gnupg
+      - lsb-release
+    update-cache: true
+    cache_valid_time: 86400
+
+- name: установка ключа для репозитория keyserver
+  ansible.builtin.apt_key:
+    keyserver: keyserver.ubuntu.com
+    id: ABF5BD827BD9BF62
+
+- name: обновление 
+  apt:
+    update-cache: true
+
+- name: скачиваем репозиторий nginx
+  apt_repository:
+    repo: deb https://nginx.org/packages/ubuntu/ {{ ansible_distribution_release }} nginx
+    state: present
+    update-cache: true
+
+- name: скачиваем репозиторий nginx
+  apt_repository: 
+    repo: deb-src https://nginx.org/packages/ubuntu/ {{ ansible_distribution_release }} nginx 
+    state: present
+    update-cache: true
+        
+- name: установка nginx
+  apt:
+    name: nginx
+    state: latest
+    update-cache: true
+
+- name: запуск gninx
+  service: 
+    name: nginx
+    state: started
+  notify:
+    - test_nginx

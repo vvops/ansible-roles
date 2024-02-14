@@ -4,3 +4,7 @@ node2 ansible_host=192.168.100.106  owner=luba
 
 [kafka1]
 192.168.100.106
+
+
+[nginx1]
+192.168.100.106
